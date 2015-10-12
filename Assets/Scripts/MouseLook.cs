@@ -59,18 +59,18 @@ public class MouseLook : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
-            Debug.DrawRay(transform.position, transform.forward*explorationDistance);
-            if (Physics.Raycast(ray, out hit, explorationDistance))
+            RaycastHit[] hits = Physics.RaycastAll(ray, explorationDistance);
+            Debug.DrawRay(transform.position, transform.forward * explorationDistance);
+            if (hits != null)
             {
-                GameObject hitObject = hit.collider.GetComponent<GameObject>();
+                GameObject hitObject = hits[0].collider.gameObject;
+                Debug.Log(hitObject.name);
                 if (hitObject != null)
                 {
-                    Debug.Log(hitObject.name);
+        
                     ExplorationReaction callback = hitObject.GetComponent<ExplorationReaction>();
                     if (callback != null)
                     {
-
                         callback.explored = true;
                     }
 
