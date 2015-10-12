@@ -31,7 +31,11 @@ public class FPS_translate : MonoBehaviour
         movement = cameraRotation * movement;
         movement.y = 0.0f;
 
-        this.transform.position += movement * Time.deltaTime;
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        rb.AddForce(movement);
+
+        //this.transform.position += movement * Time.deltaTime;
 
     }
 

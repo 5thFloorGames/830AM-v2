@@ -18,6 +18,8 @@ using System.Collections;
 public class MouseLook : MonoBehaviour
 {
 
+    public float explorationDistance = 2.5f;
+
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
     public RotationAxes axes = RotationAxes.MouseXAndY;
     public float sensitivityX = 15F;
@@ -52,6 +54,28 @@ public class MouseLook : MonoBehaviour
             rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
             transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Ray ray = new Ray(transform.position, transform.forward);
+            RaycastHit hit;
+            Debug.DrawRay(transform.position, transform.forward*explorationDistance);
+            if (Physics.Raycast(ray, out hit, explorationDistance))
+            {
+                GameObject hitObject = hit.collider.GetComponent<GameObject>();
+                if (hitObject != null)
+                {
+                    Debug.Log(hitObject.name);
+                    ExplorationReaction callback = hitObject.GetComponent<ExplorationReaction>();
+                    if (callback != null)
+                    {
+
+                        callback.explored = true;
+                    }
+
+                }
+            }
         }
     }
 
