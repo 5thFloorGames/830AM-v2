@@ -1,16 +1,31 @@
 fileFormatVersion: 2
-guid: c2430c6a30b674df3a45d4c90c818933
-timeCreated: 1445178148
+guid: 1d80e0e70d0b142f1a6269014e6393d0
+timeCreated: 1445250733
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCube2
-    9500000: //RootNode
+    100000: Collada_visual_scene_group
+    100002: Collada_visual_scene_group 1
+    100004: door_4
+    100006: door_4_1
+    100008: //RootNode
+    100010: group
+    100012: group_1
+    100014: sceneRoot
+    100016: sceneRoot 1
+    400000: Collada_visual_scene_group
+    400002: Collada_visual_scene_group 1
+    400004: door_4
+    400006: door_4_1
+    400008: //RootNode
+    400010: group
+    400012: group_1
+    400014: sceneRoot
+    400016: sceneRoot 1
+    2300000: door_4_1
+    3300000: door_4_1
+    4300000: door_4_1
   materials:
     importMaterials: 1
     materialName: 0
@@ -69,7 +84,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
