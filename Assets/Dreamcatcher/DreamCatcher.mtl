@@ -1,0 +1,157 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 20.10.2012 08:45:37
+
+newmtl grand_cercle
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\BARK5.jpg
+	map_Kd maps\BARK5.jpg
+
+newmtl corde
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\BarkDecidious0187_1_M.jpg
+	map_Kd maps\BarkDecidious0187_1_M.jpg
+
+newmtl pierre_base
+	Ns 35.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.7200 0.7200 0.7200
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\pierre base.jpg
+	map_Kd maps\pierre base.jpg
+
+newmtl plume_1_double_face
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0078 0.0078 0.0078
+	Kd 0.0078 0.0078 0.0078
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\map plume 01.jpg
+	map_Kd maps\map plume 01.jpg
+	map_bump -bm 0.3000 maps\Map__1_Normal Bump.jpg
+
+newmtl rachis
+	Ns 55.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.9686 0.8745 0.7059
+	Kd 0.9686 0.8745 0.7059
+	Ks 0.9810 0.9810 0.9810
+	Ke 0.0000 0.0000 0.0000
+
+newmtl plume03
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\map plume 01B.jpg
+	map_Kd maps\map plume 01B.jpg
+	map_bump -bm 0.3000 maps\Map__17_Normal Bump.jpg
+
+newmtl pierre_deco_3
+	Ns 55.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.7560 0.7560 0.7560
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\pierre3.jpg
+	map_Kd maps\pierre3.jpg
+
+newmtl pierre_deco_2
+	Ns 52.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.6930 0.6930 0.6930
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\pierre2.jpg
+	map_Kd maps\pierre2.jpg
+
+newmtl pierre_deco_1
+	Ns 45.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.7200 0.7200 0.7200
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\pierre1.jpg
+	map_Kd maps\pierre1.jpg
+
+newmtl pierre_noire
+	Ns 55.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.6480 0.6480 0.6480
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\pierre4.jpg
+	map_Kd maps\pierre4.jpg
+
+newmtl plume_2_double_face
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1647 0.1647 0.1647
+	Kd 0.1647 0.1647 0.1647
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\map plume 02.jpg
+	map_Kd maps\map plume 02.jpg
+	map_bump -bm 0.3000 maps\Map__5_Normal Bump.jpg
