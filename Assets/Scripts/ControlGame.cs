@@ -7,12 +7,18 @@ public class ControlGame : MonoBehaviour {
 	void Start () {
         GameObject startUI = GameObject.Find("StartUI");
 
-        GameObject inactivateThis = GameObject.Find("GamePlay");
-        inactivateThis.SetActive(false);
+        //GameObject inactivateThis = GameObject.Find("GamePlay");
+        //inactivateThis.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+    public void Exit()
+    {
+        Debug.Log("Quitting application!");
+        Application.Quit();
+    }
 }
