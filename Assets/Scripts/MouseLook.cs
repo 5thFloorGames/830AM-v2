@@ -17,7 +17,7 @@ using System.Collections;
 [AddComponentMenu("Camera-Control/Mouse Look")]
 public class MouseLook : MonoBehaviour
 {
-
+    public bool active = true;
     public float explorationDistance = 2.5f;
 
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
@@ -33,49 +33,53 @@ public class MouseLook : MonoBehaviour
 
     float rotationY = 0F;
 
+
     void FixedUpdate()
     {
-        if (axes == RotationAxes.MouseXAndY)
+        if (active)
         {
-            float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
-
-            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-            rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
-            transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-        }
-        else if (axes == RotationAxes.MouseX)
-        {
-            transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
-        }
-        else
-        {
-            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-            rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
-            transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
-        }
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit[] hits = Physics.RaycastAll(ray, explorationDistance);
-            Debug.DrawRay(transform.position, transform.forward * explorationDistance);
-            if (hits != null)
+            if (axes == RotationAxes.MouseXAndY)
             {
-                if (hits.Length > 0)
+                float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+
+                rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+                rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+
+                transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+            }
+            else if (axes == RotationAxes.MouseX)
+            {
+                transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+            }
+            else
+            {
+                rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+                rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+
+                transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+            }
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Ray ray = new Ray(transform.position, transform.forward);
+                RaycastHit[] hits = Physics.RaycastAll(ray, explorationDistance);
+                Debug.DrawRay(transform.position, transform.forward * explorationDistance);
+                if (hits != null)
                 {
-                    GameObject hitObject = hits[0].collider.gameObject;
-                    Debug.Log(hitObject.name);
-                    if (hitObject != null)
+                    if (hits.Length > 0)
                     {
-
-                        ExplorationReaction callback = hitObject.GetComponent<ExplorationReaction>();
-                        if (callback != null)
+                        GameObject hitObject = hits[0].collider.gameObject;
+                        Debug.Log(hitObject.name);
+                        if (hitObject != null)
                         {
-                            callback.explored = true;
-                        }
 
+                            ExplorationReaction callback = hitObject.GetComponent<ExplorationReaction>();
+                            if (callback != null)
+                            {
+                                callback.explored = true;
+                            }
+
+                        }
                     }
                 }
             }
