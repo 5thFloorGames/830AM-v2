@@ -27,6 +27,13 @@ public class MontageScript : MonoBehaviour
         if (timeElapsed >= scrollTime)
         {
 
+            if (pictureIndex + 1 == montageFigures.Length)
+            {
+                GameObject gameControl = GameObject.Find("GameControl");
+                ControlGame control = gameControl.GetComponent<ControlGame>();
+                control.Reset();
+            }
+
             pictureIndex = (pictureIndex + 1) % montageFigures.Length;
             timeElapsed = 0.0f;
         }
@@ -36,6 +43,14 @@ public class MontageScript : MonoBehaviour
         GameObject[] items = explorationListContainer.itemList;
         while (!EverythingExplored(items))
         {
+
+            if (pictureIndex + 1 == montageFigures.Length)
+            {
+                GameObject gameControl = GameObject.Find("GameControl");
+                ControlGame control = gameControl.GetComponent<ControlGame>();
+                control.Reset();
+            }
+
             pictureIndex = (pictureIndex + 1) % montageFigures.Length;
 
             figure = montageFigures[pictureIndex];
@@ -54,7 +69,6 @@ public class MontageScript : MonoBehaviour
                 montageFigures[i].SetActive(false);
             }
         }
-
 
     }
 
