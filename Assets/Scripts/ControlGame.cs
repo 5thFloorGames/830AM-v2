@@ -3,10 +3,15 @@ using System.Collections;
 
 public class ControlGame : MonoBehaviour {
 
+    GameObject startUI = null;
+    GameObject gamePlay = null;
     GameObject montage = null;
 
 	// Use this for initialization
 	void Start () {
+
+        startUI = GameObject.Find("StartUI");
+        gamePlay = GameObject.Find("GamePlay");
 
         GameObject player_camera = GameObject.Find("Player_camera");
         FPS_translate mover = player_camera.GetComponent<FPS_translate>();
@@ -41,9 +46,16 @@ public class ControlGame : MonoBehaviour {
         MouseLook rotator = player_camera.GetComponent<MouseLook>();
         rotator.active = true;
 
-        GameObject startUI = GameObject.Find("StartUI");
+
         startUI.SetActive(false);
 
+        
+    }
+
+    public void ActivateMontage()
+    {
+        startUI.SetActive(false);
+        gamePlay.SetActive(false);
         montage.SetActive(true);
     }
 }
