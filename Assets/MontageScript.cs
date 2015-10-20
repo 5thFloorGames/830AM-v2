@@ -45,10 +45,23 @@ public class MontageScript : MonoBehaviour
         GameObject figure = montageFigures[pictureIndex];
         NecessaryItems explorationListContainer = figure.GetComponent<NecessaryItems>();
         GameObject[] items = explorationListContainer.itemList;
-        for (int i = pictureIndex; i < montageFigures.Length; i++)
+        for (int i = pictureIndex; i <= montageFigures.Length; i++)
         {
             
             pictureIndex = i;
+
+            if (i == montageFigures.Length)
+            {
+                GameObject gameControl = GameObject.Find("GameControl");
+                ControlGame control = gameControl.GetComponent<ControlGame>();
+                pictureIndex = 0;
+                control.Reset();
+                break;
+            }
+
+            figure = montageFigures[i];
+            explorationListContainer = figure.GetComponent<NecessaryItems>();
+            items = explorationListContainer.itemList;
 
             if (AnythingExplored(items))
             {
@@ -56,18 +69,6 @@ public class MontageScript : MonoBehaviour
                 break;
             }
 
-
-            figure = montageFigures[pictureIndex];
-            explorationListContainer = figure.GetComponent<NecessaryItems>();
-            items = explorationListContainer.itemList;
-        }
-
-        if (pictureIndex == montageFigures.Length)
-        {
-            GameObject gameControl = GameObject.Find("GameControl");
-            ControlGame control = gameControl.GetComponent<ControlGame>();
-            pictureIndex = 0;
-            control.Reset();
         }
 
         for (int i = 0; i < montageFigures.Length; i++)

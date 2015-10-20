@@ -137,7 +137,7 @@ public class ControlGame : MonoBehaviour {
             ExplorationReaction reaction = objects[i].GetComponent<ExplorationReaction>();
             if (reaction)
             {
-                reaction.explored = false;
+                objects[i].GetComponent<ExplorationReaction>().explored = false;
             }
         }
 
