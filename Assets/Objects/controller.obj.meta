@@ -1,0 +1,173 @@
+fileFormatVersion: 2
+guid: 79711778fde6d4dcb8f320138938a95b
+timeCreated: 1445283439
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: ps2joystick:Body
+    100004: ps2joystick:Box02
+    100006: ps2joystick:Box03
+    100008: ps2joystick:Box04
+    100010: ps2joystick:Box05
+    100012: ps2joystick:Box06
+    100014: ps2joystick:Box07
+    100016: ps2joystick:Box08
+    100018: ps2joystick:Box09
+    100020: ps2joystick:Box10
+    100022: ps2joystick:Box11
+    100024: ps2joystick:Box12
+    100026: ps2joystick:Cylinder01
+    100028: ps2joystick:Cylinder02
+    100030: ps2joystick:Cylinder03
+    100032: ps2joystick:Cylinder04
+    100034: ps2joystick:Cylinder05
+    100036: ps2joystick:Cylinder06
+    100038: ps2joystick:Cylinder07
+    100040: ps2joystick:Cylinder08
+    400000: //RootNode
+    400002: ps2joystick:Body
+    400004: ps2joystick:Box02
+    400006: ps2joystick:Box03
+    400008: ps2joystick:Box04
+    400010: ps2joystick:Box05
+    400012: ps2joystick:Box06
+    400014: ps2joystick:Box07
+    400016: ps2joystick:Box08
+    400018: ps2joystick:Box09
+    400020: ps2joystick:Box10
+    400022: ps2joystick:Box11
+    400024: ps2joystick:Box12
+    400026: ps2joystick:Cylinder01
+    400028: ps2joystick:Cylinder02
+    400030: ps2joystick:Cylinder03
+    400032: ps2joystick:Cylinder04
+    400034: ps2joystick:Cylinder05
+    400036: ps2joystick:Cylinder06
+    400038: ps2joystick:Cylinder07
+    400040: ps2joystick:Cylinder08
+    2300000: ps2joystick:Body
+    2300002: ps2joystick:Box02
+    2300004: ps2joystick:Box03
+    2300006: ps2joystick:Box04
+    2300008: ps2joystick:Box05
+    2300010: ps2joystick:Box06
+    2300012: ps2joystick:Box07
+    2300014: ps2joystick:Box08
+    2300016: ps2joystick:Box09
+    2300018: ps2joystick:Box10
+    2300020: ps2joystick:Box11
+    2300022: ps2joystick:Box12
+    2300024: ps2joystick:Cylinder01
+    2300026: ps2joystick:Cylinder02
+    2300028: ps2joystick:Cylinder03
+    2300030: ps2joystick:Cylinder04
+    2300032: ps2joystick:Cylinder05
+    2300034: ps2joystick:Cylinder06
+    2300036: ps2joystick:Cylinder07
+    2300038: ps2joystick:Cylinder08
+    3300000: ps2joystick:Body
+    3300002: ps2joystick:Box02
+    3300004: ps2joystick:Box03
+    3300006: ps2joystick:Box04
+    3300008: ps2joystick:Box05
+    3300010: ps2joystick:Box06
+    3300012: ps2joystick:Box07
+    3300014: ps2joystick:Box08
+    3300016: ps2joystick:Box09
+    3300018: ps2joystick:Box10
+    3300020: ps2joystick:Box11
+    3300022: ps2joystick:Box12
+    3300024: ps2joystick:Cylinder01
+    3300026: ps2joystick:Cylinder02
+    3300028: ps2joystick:Cylinder03
+    3300030: ps2joystick:Cylinder04
+    3300032: ps2joystick:Cylinder05
+    3300034: ps2joystick:Cylinder06
+    3300036: ps2joystick:Cylinder07
+    3300038: ps2joystick:Cylinder08
+    4300000: ps2joystick:Body
+    4300002: ps2joystick:Box02
+    4300004: ps2joystick:Box03
+    4300006: ps2joystick:Box04
+    4300008: ps2joystick:Box05
+    4300010: ps2joystick:Box06
+    4300012: ps2joystick:Box07
+    4300014: ps2joystick:Box08
+    4300016: ps2joystick:Box09
+    4300018: ps2joystick:Box10
+    4300020: ps2joystick:Box11
+    4300022: ps2joystick:Box12
+    4300024: ps2joystick:Cylinder01
+    4300026: ps2joystick:Cylinder02
+    4300028: ps2joystick:Cylinder03
+    4300030: ps2joystick:Cylinder04
+    4300032: ps2joystick:Cylinder05
+    4300034: ps2joystick:Cylinder06
+    4300036: ps2joystick:Cylinder07
+    4300038: ps2joystick:Cylinder08
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
