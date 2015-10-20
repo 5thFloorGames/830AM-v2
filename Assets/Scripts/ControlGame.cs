@@ -6,7 +6,12 @@ public class ControlGame : MonoBehaviour {
     GameObject startUI = null;
     GameObject gamePlay = null;
     GameObject montage = null;
-    Transform cameraInit = null;
+    Vector3 cameraInit = new Vector3(0.0f,0.0f,0.0f);
+    Quaternion cameraInitRotation = new Quaternion();
+
+    int initHours = 0;
+    int initMinutes = 0;
+
     GameObject clock = null;
 
 	// Use this for initialization
@@ -21,11 +26,19 @@ public class ControlGame : MonoBehaviour {
         mover.active = false;
         MouseLook rotator = player_camera.GetComponent<MouseLook>();
         rotator.active = false;
+        cameraInitRotation = player_camera.transform.rotation;
+
+        cameraInit = player_camera.transform.position;
 
         clock = GameObject.Find("Clock");
         clock.SetActive(false);
 
+        initMinutes = clock.GetComponent<RunningTime>().minutes;
+        initHours = clock.GetComponent<RunningTime>().hours;
+
         //gamePlay.SetActive(false);
+
+
 
         montage = GameObject.Find("Montage");
         montage.SetActive(false);
@@ -96,8 +109,15 @@ public class ControlGame : MonoBehaviour {
         rotator.active = false;
         Debug.Log(player_camera.transform.rotation);
 
+        player_camera.transform.position = cameraInit;
+        player_camera.transform.rotation = cameraInitRotation;
+
+        clock.GetComponent<RunningTime>().minutes = initMinutes;
+        clock.GetComponent<RunningTime>().hours = initHours;
+
         startUI.SetActive(true);
-        gamePlay.SetActive(false);
+        gamePlay.SetActive(true);
+        clock.SetActive(false);
         montage.SetActive(false);
 
     }
