@@ -68,19 +68,24 @@ public class MouseLook : MonoBehaviour
                 {
                     if (hits.Length > 0)
                     {
-                        GameObject hitObject = hits[0].collider.gameObject;
-                        Debug.Log(hitObject.name);
-                        if (hitObject != null)
-                        {
 
-                            ExplorationReaction callback = hitObject.GetComponent<ExplorationReaction>();
-                            if (callback != null)
-                            {
-                                callback.explored = true;
-                            }
 
-                        }
-                    }
+						for (int i = 0; i < hits.Length; i++){
+                        
+							GameObject hitObject = hits[i].collider.gameObject;
+
+							if (hitObject != null)
+                        
+							{
+
+	                            ExplorationReaction callback = hitObject.GetComponent<ExplorationReaction>();
+	                            if (callback != null)
+	                            {
+	                                callback.explored = true;
+	                            }
+
+                        	}
+						}                    }
                 }
             }
         }

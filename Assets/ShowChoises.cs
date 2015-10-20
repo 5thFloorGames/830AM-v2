@@ -5,7 +5,7 @@ public class ShowChoises : MonoBehaviour {
 
     TextMesh[] choises = null;
     public float disappearTime = 3.0f;
-    float timeCount = 0.0f;
+    public float timeCount = 0.0f;
 
 	// Use this for initialization
 	void Start () {
