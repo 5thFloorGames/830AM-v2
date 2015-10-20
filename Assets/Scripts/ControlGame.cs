@@ -12,6 +12,8 @@ public class ControlGame : MonoBehaviour {
     int initHours = 0;
     int initMinutes = 0;
 
+    bool paused = false;
+
     GameObject clock = null;
 
 	// Use this for initialization
@@ -47,8 +49,16 @@ public class ControlGame : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        if (Input.GetButtonDown("Jump"))
+        {
+            Pause_Unpause();
+        }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Reset();
+        }
+    }
 
     public void Exit()
     {
@@ -81,6 +91,33 @@ public class ControlGame : MonoBehaviour {
         startUI.SetActive(false);
         gamePlay.SetActive(false);
         montage.SetActive(true);
+    }
+
+    public void Pause_Unpause()
+    {
+
+        if (!paused)
+        {
+            clock.SetActive(false);
+            GameObject player_camera = GameObject.Find("Player_camera");
+            FPS_translate mover = player_camera.GetComponent<FPS_translate>();
+            mover.active = false;
+            MouseLook rotator = player_camera.GetComponent<MouseLook>();
+            rotator.active = false;
+            cameraInitRotation = player_camera.transform.rotation;
+            paused = true;
+        }
+        else
+        {
+            clock.SetActive(true);
+            GameObject player_camera = GameObject.Find("Player_camera");
+            FPS_translate mover = player_camera.GetComponent<FPS_translate>();
+            mover.active = true;
+            MouseLook rotator = player_camera.GetComponent<MouseLook>();
+            rotator.active = true;
+            cameraInitRotation = player_camera.transform.rotation;
+            paused = false;
+        }
     }
 
     public void Reset()
