@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ControlGame : MonoBehaviour {
+public class ControlGame : MonoBehaviour
+{
 
     GameObject startUI = null;
     GameObject gamePlay = null;
     GameObject montage = null;
-    Vector3 cameraInit = new Vector3(0.0f,0.0f,0.0f);
+    GameObject gamePlaySound = null;
+    ExplorationReaction[] exploratives = null;
+
+    Vector3 cameraInit = new Vector3(0.0f, 0.0f, 0.0f);
     Quaternion cameraInitRotation = new Quaternion();
 
     int initHours = 0;
@@ -17,12 +21,16 @@ public class ControlGame : MonoBehaviour {
 
     GameObject clock = null;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
+
+        exploratives = FindObjectsOfType<ExplorationReaction>();
 
         startUI = GameObject.Find("StartUI");
         startUI.SetActive(true);
         gamePlay = GameObject.Find("GamePlay");
+        gamePlaySound = GameObject.Find("GamePlaySounds");
 
         GameObject player_camera = GameObject.Find("Player_camera");
         FPS_translate mover = player_camera.GetComponent<FPS_translate>();
@@ -40,6 +48,11 @@ public class ControlGame : MonoBehaviour {
         initHours = clock.GetComponent<RunningTime>().hours;
         initExtraTime = clock.GetComponent<RunningTime>().extraTime;
 
+        if (gamePlaySound)
+        {
+            gamePlaySound.SetActive(false);
+        }
+
         //gamePlay.SetActive(false);
 
 
@@ -48,9 +61,10 @@ public class ControlGame : MonoBehaviour {
         montage.SetActive(false);
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetButtonDown("Jump"))
         {
             Pause_Unpause();
@@ -71,6 +85,10 @@ public class ControlGame : MonoBehaviour {
     public void ActivateGame()
     {
 
+        if (gamePlaySound)
+        {
+            gamePlaySound.SetActive(true);
+        }
 
         GameObject player_camera = GameObject.Find("Player_camera");
         FPS_translate mover = player_camera.GetComponent<FPS_translate>();
@@ -90,6 +108,11 @@ public class ControlGame : MonoBehaviour {
 
     public void ActivateMontage()
     {
+
+        if (gamePlaySound)
+        {
+            gamePlaySound.SetActive(false);
+        }
         startUI.SetActive(false);
         gamePlay.SetActive(false);
         montage.SetActive(true);
@@ -108,9 +131,17 @@ public class ControlGame : MonoBehaviour {
             rotator.active = false;
             cameraInitRotation = player_camera.transform.rotation;
             paused = true;
+            if (gamePlaySound)
+            {
+                gamePlaySound.SetActive(false);
+            }
         }
         else
         {
+            if (gamePlaySound)
+            {
+                gamePlaySound.SetActive(true);
+            }
             clock.SetActive(true);
             GameObject player_camera = GameObject.Find("Player_camera");
             FPS_translate mover = player_camera.GetComponent<FPS_translate>();
@@ -124,29 +155,41 @@ public class ControlGame : MonoBehaviour {
 
     public void Reset()
     {
+        if (gamePlaySound)
+        {
+            gamePlaySound.SetActive(false);
+        }
         startUI.SetActive(true);
         gamePlay.SetActive(true);
         montage.SetActive(true);
         UnityEngine.Cursor.visible = true;
 
 
-        GameObject[] objects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+    
 
-        for (int i = 0; i < objects.Length; i++)
+        foreach (ExplorationReaction reaction in exploratives)
         {
-            ExplorationReaction reaction = objects[i].GetComponent<ExplorationReaction>();
-            if (reaction)
-            {
-                objects[i].GetComponent<ExplorationReaction>().explored = false;
-            }
+            reaction.explored = false;
         }
+
+        //for (int i = 0; i < objects.Length; i++)
+        //{
+        //    ExplorationReaction reaction = objects[i].GetComponent<ExplorationReaction>();
+        //    if (reaction)
+        //    {
+        //        if (reaction.explored)
+        //        {
+        //            Debug.Log(objects[i].name);
+        //        }
+        //        objects[i].GetComponent<ExplorationReaction>().explored = false;
+        //    }
+        //}
 
         GameObject player_camera = GameObject.Find("Player_camera");
         FPS_translate mover = player_camera.GetComponent<FPS_translate>();
         mover.active = false;
         MouseLook rotator = player_camera.GetComponent<MouseLook>();
         rotator.active = false;
-        Debug.Log(player_camera.transform.rotation);
 
         player_camera.transform.position = cameraInit;
         player_camera.transform.rotation = cameraInitRotation;

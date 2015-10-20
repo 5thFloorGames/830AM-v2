@@ -65,7 +65,6 @@ public class MontageScript : MonoBehaviour
 
             if (AnythingExplored(items))
             {
-                Debug.Log(pictureIndex);
                 break;
             }
 
@@ -98,7 +97,6 @@ public class MontageScript : MonoBehaviour
                 if (isExplored.explored)
                 {
                     explored = true;
-                    Debug.Log(isExplored.gameObject.name);
                 }
             }
         }
