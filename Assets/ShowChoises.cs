@@ -32,9 +32,13 @@ public class ShowChoises : MonoBehaviour
 
         foreach (TextMesh choise in choises)
         {
-            if (choise.gameObject.GetComponent<ExplorationReaction>().explored)
+            ExplorationReaction childExploration = choise.gameObject.GetComponent<ExplorationReaction>();
+            if (childExploration)
             {
-                someChoisePicked = true;
+                if (childExploration.explored)
+                {
+                    someChoisePicked = true;
+                }
             }
         }
 
