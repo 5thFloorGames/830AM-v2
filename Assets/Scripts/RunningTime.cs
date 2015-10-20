@@ -10,6 +10,8 @@ public class RunningTime : MonoBehaviour {
     public int endMinutes = 30;
     public int endHours = 8;
 
+    public int extraTime = 15;
+
     float timer = 0;
     float timeElapsingInterval = 1.0f;
 
@@ -51,6 +53,11 @@ public class RunningTime : MonoBehaviour {
 
             minutes = minutes % 60;
             hours = hours % 24;
+
+            if (hours >= endHours && minutes >= endMinutes)
+            {
+                extraTime--;
+            }
         }
 
         Text text = GetComponent<Text>();
@@ -74,6 +81,13 @@ public class RunningTime : MonoBehaviour {
         if (hours >= endHours && minutes >= endMinutes)
         {
             text.text = "AAARGH, you are late! Go out IMMEDIATELY!";
+        }
+
+        if (extraTime <= 0)
+        {
+            GameObject gameControl = GameObject.Find("GameControl");
+            ControlGame control = gameControl.GetComponent<ControlGame>();
+            control.Reset();
         }
 
     }

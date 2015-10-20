@@ -12,6 +12,7 @@ public class MontageScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         montageFigures = GameObject.FindGameObjectsWithTag("MontagePicture");
         for (int i = 0; i < montageFigures.Length; i++)
         {
@@ -22,40 +23,51 @@ public class MontageScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         timeElapsed += Time.deltaTime;
 
         if (timeElapsed >= scrollTime)
         {
+       
+            pictureIndex++;
 
-            if (pictureIndex + 1 == montageFigures.Length)
+            if (pictureIndex == montageFigures.Length)
             {
                 GameObject gameControl = GameObject.Find("GameControl");
                 ControlGame control = gameControl.GetComponent<ControlGame>();
+                pictureIndex = 0;
                 control.Reset();
             }
-
-            pictureIndex = (pictureIndex + 1) % montageFigures.Length;
             timeElapsed = 0.0f;
         }
 
         GameObject figure = montageFigures[pictureIndex];
         NecessaryItems explorationListContainer = figure.GetComponent<NecessaryItems>();
         GameObject[] items = explorationListContainer.itemList;
-        while (!EverythingExplored(items))
+        for (int i = pictureIndex; i < montageFigures.Length; i++)
         {
+            
+            pictureIndex = i;
 
-            if (pictureIndex + 1 == montageFigures.Length)
+            if (AnythingExplored(items))
             {
-                GameObject gameControl = GameObject.Find("GameControl");
-                ControlGame control = gameControl.GetComponent<ControlGame>();
-                control.Reset();
+                Debug.Log(pictureIndex);
+                break;
             }
 
-            pictureIndex = (pictureIndex + 1) % montageFigures.Length;
 
             figure = montageFigures[pictureIndex];
             explorationListContainer = figure.GetComponent<NecessaryItems>();
             items = explorationListContainer.itemList;
+        }
+
+        if (pictureIndex == montageFigures.Length)
+        {
+            GameObject gameControl = GameObject.Find("GameControl");
+            ControlGame control = gameControl.GetComponent<ControlGame>();
+            pictureIndex = 0;
+            control.Reset();
         }
 
         for (int i = 0; i < montageFigures.Length; i++)
@@ -73,22 +85,23 @@ public class MontageScript : MonoBehaviour
     }
 
 
-    bool EverythingExplored(GameObject[] unlockingItems)
+    bool AnythingExplored(GameObject[] unlockingItems)
     {
-        bool explored = true;
+        bool explored = false;
 
         for (int i = 0; i < unlockingItems.Length; i++)
         {
             if (unlockingItems[i])
             {
-                Debug.Log(unlockingItems[i].name);
                 ExplorationReaction isExplored = unlockingItems[i].GetComponent<ExplorationReaction>();
-                if (!(isExplored.explored))
+                if (isExplored.explored)
                 {
-                    explored = false;
+                    explored = true;
+                    Debug.Log(isExplored.gameObject.name);
                 }
             }
         }
+
 
         return explored;
     }

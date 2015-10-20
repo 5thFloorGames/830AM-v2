@@ -11,6 +11,7 @@ public class ControlGame : MonoBehaviour {
 
     int initHours = 0;
     int initMinutes = 0;
+    int initExtraTime = 0;
 
     bool paused = false;
 
@@ -37,6 +38,7 @@ public class ControlGame : MonoBehaviour {
 
         initMinutes = clock.GetComponent<RunningTime>().minutes;
         initHours = clock.GetComponent<RunningTime>().hours;
+        initExtraTime = clock.GetComponent<RunningTime>().extraTime;
 
         //gamePlay.SetActive(false);
 
@@ -151,6 +153,7 @@ public class ControlGame : MonoBehaviour {
 
         clock.GetComponent<RunningTime>().minutes = initMinutes;
         clock.GetComponent<RunningTime>().hours = initHours;
+        clock.GetComponent<RunningTime>().extraTime = initExtraTime;
 
         startUI.SetActive(true);
         gamePlay.SetActive(true);
