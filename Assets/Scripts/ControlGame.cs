@@ -58,6 +58,7 @@ public class ControlGame : MonoBehaviour {
         gamePlay.SetActive(true);
         montage.SetActive(false);
         clock.SetActive(true);
+        UnityEngine.Cursor.visible = false;
 
 
     }
@@ -74,6 +75,7 @@ public class ControlGame : MonoBehaviour {
         startUI.SetActive(true);
         gamePlay.SetActive(true);
         montage.SetActive(true);
+        UnityEngine.Cursor.visible = true;
 
 
         GameObject[] objects = UnityEngine.Object.FindObjectsOfType<GameObject>();
