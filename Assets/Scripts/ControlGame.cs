@@ -7,11 +7,13 @@ public class ControlGame : MonoBehaviour {
     GameObject gamePlay = null;
     GameObject montage = null;
     Transform cameraInit = null;
+    GameObject clock = null;
 
 	// Use this for initialization
 	void Start () {
 
         startUI = GameObject.Find("StartUI");
+        startUI.SetActive(true);
         gamePlay = GameObject.Find("GamePlay");
 
         GameObject player_camera = GameObject.Find("Player_camera");
@@ -19,6 +21,11 @@ public class ControlGame : MonoBehaviour {
         mover.active = false;
         MouseLook rotator = player_camera.GetComponent<MouseLook>();
         rotator.active = false;
+
+        clock = GameObject.Find("Clock");
+        clock.SetActive(false);
+
+        //gamePlay.SetActive(false);
 
         montage = GameObject.Find("Montage");
         montage.SetActive(false);
@@ -48,8 +55,11 @@ public class ControlGame : MonoBehaviour {
 
 
         startUI.SetActive(false);
+        gamePlay.SetActive(true);
+        montage.SetActive(false);
+        clock.SetActive(true);
 
-        
+
     }
 
     public void ActivateMontage()
@@ -61,17 +71,18 @@ public class ControlGame : MonoBehaviour {
 
     public void Reset()
     {
+        startUI.SetActive(true);
         gamePlay.SetActive(true);
+        montage.SetActive(true);
+
+
         GameObject[] objects = UnityEngine.Object.FindObjectsOfType<GameObject>();
 
         for (int i = 0; i < objects.Length; i++)
         {
             ExplorationReaction reaction = objects[i].GetComponent<ExplorationReaction>();
-            Debug.Log("Attempting to change.");
-            Debug.Log(objects[i].name);
             if (reaction)
             {
-                Debug.Log("Reaction changed.");
                 reaction.explored = false;
             }
         }
