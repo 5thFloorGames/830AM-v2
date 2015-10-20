@@ -11,7 +11,8 @@ public class ExplorationReaction : MonoBehaviour {
     }
 
     void Update()
-    {
+    { 
+
 
 
 
