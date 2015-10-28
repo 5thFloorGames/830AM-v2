@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 /// MouseLook rotates the transform based on the mouse delta.
 /// Minimum and Maximum values can be used to constrain the possible rotation
@@ -31,13 +33,72 @@ public class MouseLook : MonoBehaviour
     public float minimumY = -60F;
     public float maximumY = 60F;
 
+    public int numberOfChoises = 5;
+    public int choisesDone = 0;
+
     float rotationY = 0F;
 
+
+    Dictionary<ExplorationReaction, Color> lookedAtObjectColors = new Dictionary<ExplorationReaction,Color>();
 
     void FixedUpdate()
     {
         if (active)
         {
+
+            if (lookedAtObjectColors != null)
+            {
+                foreach (ExplorationReaction reaction in lookedAtObjectColors.Keys)
+                {
+                    if (reaction.isActiveAndEnabled)
+                    {
+                        Renderer renderer = reaction.gameObject.GetComponentInChildren<Renderer>();
+                        renderer.material.color = lookedAtObjectColors[reaction];
+                    }
+                }
+            }
+
+            Ray rayTmp = new Ray(transform.position, transform.forward);
+            RaycastHit[] hitsTmp = Physics.RaycastAll(rayTmp, explorationDistance);
+            if (hitsTmp != null)
+            {
+                if (hitsTmp.Length > 0)
+                {
+
+
+                    for (int i = 0; i < hitsTmp.Length; i++)
+                    {
+
+                        GameObject hitObject = hitsTmp[i].collider.gameObject;
+
+                        if (hitObject != null)
+                        {
+
+                            ExplorationReaction callback = hitObject.GetComponent<ExplorationReaction>();
+                            if (callback != null)
+                            {
+                                Renderer renderer = callback.gameObject.GetComponentInChildren<Renderer>();
+                                if (!lookedAtObjectColors.ContainsKey(callback))
+                                {
+                                    lookedAtObjectColors.Add(callback, renderer.material.color);
+                                }
+                                renderer.material.color = Color.red;
+                            }
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                lookedAtObjectColors.Clear();
+            }
+
+
+
+
+
+
             if (axes == RotationAxes.MouseXAndY)
             {
                 float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
@@ -70,25 +131,39 @@ public class MouseLook : MonoBehaviour
                     {
 
 
-						for (int i = 0; i < hits.Length; i++){
-                        
-							GameObject hitObject = hits[i].collider.gameObject;
+                        for (int i = 0; i < hits.Length; i++)
+                        {
 
-							if (hitObject != null)
-                        
-							{
+                            GameObject hitObject = hits[i].collider.gameObject;
 
-	                            ExplorationReaction callback = hitObject.GetComponent<ExplorationReaction>();
-	                            if (callback != null)
-	                            {
-	                                callback.explored = true;
-	                            }
+                            if (hitObject != null)
+                            {
 
-                        	}
-						}                    }
+                                ExplorationReaction callback = hitObject.GetComponent<ExplorationReaction>();
+                                if (callback != null)
+                                {
+                                    callback.explored = true;
+
+                                    ShowChoises choises = hitObject.GetComponent<ShowChoises>();
+                                    if (choises == null)
+                                    {
+                                        choisesDone++;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
         }
+
+        if (choisesDone >= numberOfChoises)
+        {
+            GameObject gameControl = GameObject.Find("GameControl");
+            gameControl.GetComponent<ControlGame>().ActivateMontage();
+        }
+
     }
 
     void Start()

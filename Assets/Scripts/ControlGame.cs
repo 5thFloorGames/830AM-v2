@@ -13,9 +13,9 @@ public class ControlGame : MonoBehaviour
     Vector3 cameraInit = new Vector3(0.0f, 0.0f, 0.0f);
     Quaternion cameraInitRotation = new Quaternion();
 
-    int initHours = 0;
-    int initMinutes = 0;
-    int initExtraTime = 0;
+    //int initHours = 0;
+    //int initMinutes = 0;
+    //int initExtraTime = 0;
 
     bool paused = false;
 
@@ -44,9 +44,9 @@ public class ControlGame : MonoBehaviour
         clock = GameObject.Find("Clock");
         clock.SetActive(false);
 
-        initMinutes = clock.GetComponent<RunningTime>().minutes;
-        initHours = clock.GetComponent<RunningTime>().hours;
-        initExtraTime = clock.GetComponent<RunningTime>().extraTime;
+        //initMinutes = clock.GetComponent<RunningTime>().minutes;
+        //initHours = clock.GetComponent<RunningTime>().hours;
+        //initExtraTime = clock.GetComponent<RunningTime>().extraTime;
 
         if (gamePlaySound)
         {
@@ -165,7 +165,8 @@ public class ControlGame : MonoBehaviour
         UnityEngine.Cursor.visible = true;
 
 
-    
+        GameObject camera = GameObject.Find("Player_camera");
+        camera.GetComponent<MouseLook>().choisesDone = 0;
 
         foreach (ExplorationReaction reaction in exploratives)
         {
@@ -194,9 +195,9 @@ public class ControlGame : MonoBehaviour
         player_camera.transform.position = cameraInit;
         player_camera.transform.rotation = cameraInitRotation;
 
-        clock.GetComponent<RunningTime>().minutes = initMinutes;
-        clock.GetComponent<RunningTime>().hours = initHours;
-        clock.GetComponent<RunningTime>().extraTime = initExtraTime;
+        //clock.GetComponent<RunningTime>().minutes = initMinutes;
+        //clock.GetComponent<RunningTime>().hours = initHours;
+        //clock.GetComponent<RunningTime>().extraTime = initExtraTime;
 
         startUI.SetActive(true);
         gamePlay.SetActive(true);
