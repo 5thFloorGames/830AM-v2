@@ -76,11 +76,11 @@ public class RunningTime : MonoBehaviour {
         }
         minuteString += minutes.ToString();
 
-        text.text = "Time is " + hourString + ":" + minuteString + "\n" + "Get out by " + getOutString;
+        text.text = "The time is " + hourString + ":" + minuteString + "\n" + "I have to leave by " + getOutString;
 
         if (hours >= endHours && minutes >= endMinutes)
         {
-            text.text = "AAARGH, you are late! Go out IMMEDIATELY!";
+            text.text = "Damn, I am late!";
         }
 
         if (extraTime <= 0)
