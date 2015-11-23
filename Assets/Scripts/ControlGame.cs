@@ -8,6 +8,7 @@ public class ControlGame : MonoBehaviour
     GameObject gamePlay = null;
     GameObject montage = null;
     GameObject gamePlaySound = null;
+    GameObject footStepSound = null;
     ExplorationReaction[] exploratives = null;
 
     Vector3 cameraInit = new Vector3(0.0f, 0.0f, 0.0f);
@@ -31,6 +32,7 @@ public class ControlGame : MonoBehaviour
         startUI.SetActive(true);
         gamePlay = GameObject.Find("GamePlay");
         gamePlaySound = GameObject.Find("GamePlaySounds");
+        footStepSound = GameObject.Find("FootstepSounds");
 
         GameObject player_camera = GameObject.Find("Player_camera");
         FPS_translate mover = player_camera.GetComponent<FPS_translate>();
@@ -51,6 +53,11 @@ public class ControlGame : MonoBehaviour
         if (gamePlaySound)
         {
             gamePlaySound.SetActive(false);
+        }
+
+        if (footStepSound)
+        {
+            footStepSound.SetActive(false);
         }
 
         //gamePlay.SetActive(false);
@@ -90,6 +97,11 @@ public class ControlGame : MonoBehaviour
             gamePlaySound.SetActive(true);
         }
 
+        if (footStepSound)
+        {
+            footStepSound.SetActive(true);
+        }
+
         GameObject player_camera = GameObject.Find("Player_camera");
         FPS_translate mover = player_camera.GetComponent<FPS_translate>();
         mover.active = true;
@@ -108,6 +120,11 @@ public class ControlGame : MonoBehaviour
 
     public void ActivateMontage()
     {
+
+        if (footStepSound)
+        {
+            footStepSound.SetActive(false);
+        }
 
         if (gamePlaySound)
         {
@@ -135,12 +152,20 @@ public class ControlGame : MonoBehaviour
             {
                 gamePlaySound.SetActive(false);
             }
+            if (footStepSound)
+            {
+                footStepSound.SetActive(false);
+            }
         }
         else
         {
             if (gamePlaySound)
             {
                 gamePlaySound.SetActive(true);
+            }
+            if (footStepSound)
+            {
+                footStepSound.SetActive(true);
             }
             clock.SetActive(true);
             GameObject player_camera = GameObject.Find("Player_camera");
@@ -158,6 +183,10 @@ public class ControlGame : MonoBehaviour
         if (gamePlaySound)
         {
             gamePlaySound.SetActive(false);
+        }
+        if (footStepSound)
+        {
+            footStepSound.SetActive(false);
         }
         startUI.SetActive(true);
         gamePlay.SetActive(true);
